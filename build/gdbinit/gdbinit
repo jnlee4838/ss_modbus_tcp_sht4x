@@ -1,0 +1,2 @@
+source D:/fw_github/ss_modbus_tcp_sht4x/build/gdbinit/symbols
+source D:/fw_github/ss_modbus_tcp_sht4x/build/gdbinit/connect

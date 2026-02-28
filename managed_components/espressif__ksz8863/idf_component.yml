@@ -1,0 +1,12 @@
+dependencies:
+  idf: '>=5.3'
+description: KSZ8863 Ethernet Driver
+repository: git://github.com/espressif/esp-eth-drivers.git
+repository_info:
+  commit_sha: 863ee04a04755c8c2f50370ca1db4b73bfcc080d
+  path: ksz8863
+targets:
+- esp32
+- esp32p4
+url: https://github.com/espressif/esp-eth-drivers/tree/master/ksz8863
+version: 0.2.10

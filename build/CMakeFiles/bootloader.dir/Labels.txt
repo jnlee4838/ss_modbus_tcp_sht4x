@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+D:/fw_github/ss_modbus_tcp_sht4x/build/CMakeFiles/bootloader
+D:/fw_github/ss_modbus_tcp_sht4x/build/CMakeFiles/bootloader.rule
+D:/fw_github/ss_modbus_tcp_sht4x/build/CMakeFiles/bootloader-complete.rule
+D:/fw_github/ss_modbus_tcp_sht4x/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+D:/fw_github/ss_modbus_tcp_sht4x/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+D:/fw_github/ss_modbus_tcp_sht4x/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+D:/fw_github/ss_modbus_tcp_sht4x/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+D:/fw_github/ss_modbus_tcp_sht4x/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+D:/fw_github/ss_modbus_tcp_sht4x/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+D:/fw_github/ss_modbus_tcp_sht4x/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

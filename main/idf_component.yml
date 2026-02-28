@@ -1,0 +1,19 @@
+dependencies:
+  idf:
+    version: ">=5.4.2"
+  # for KSZ8863
+  espressif/ksz8863:
+    version: "~0.2.0"
+  # for Modbus TCP 및 mDNS
+  espressif/esp-modbus:
+    version: "^2.0.0"
+  espressif/mdns:
+    version: "^1.0.0"
+  # for SHT4x
+  esp-idf-lib/esp_idf_lib_helpers:
+    version: "*"
+  esp-idf-lib/i2cdev:
+    version: "*"
+  esp-idf-lib/sht4x:
+    version: "*"
+description: SS Modbus SHT4x Example
