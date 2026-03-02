@@ -19,7 +19,7 @@ By the way, before we jump in, please read the previous repos here[https://githu
 
 ## Buy
 
-    [**For an inquiry, email me**](mailto:jnlee4838@gmail.com)
+* For an inquiry, [*email me*](jnlee4838@gmail.com)
 
 ### Korea
 
