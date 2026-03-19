@@ -78,30 +78,55 @@ We are going to use ESP-IDF version 5.4.2 only in this project, you should insta
 ![esp32 ksz8863 simple switch sht4x sdkconfig](images/ESP32_KSZ8863_SHT4x_Step_07.jpg)
 
 * --> Type "cpu" in the top search box
-   Component config > ESP System Settings > CPU frequency -> "240 MHz"
-   Modbus configuration > Modbus task affinity -> "CPU1"
-   mDNS > mDNS task affinity -> "CPU1"
+
+   1. Component config > ESP System Settings > CPU frequency -> "240 MHz"
+
+   2. Modbus configuration > Modbus task affinity -> "CPU1"
+
+   3. mDNS > mDNS task affinity -> "CPU1"
 
 * --> Type "flash" in the top search box
-   Serial flasher config > Flash size -> "4MB"
+
+   4. Serial flasher config > Flash size -> "4MB"
 
 * --> Click "Example Configuration"
-   Example Configuration > Enable external RMII clock oscillator unchecked
+
+   5. Example Configuration > Enable external RMII clock oscillator -> "unchecked"
 
 * --> Click Component config > "Ethernet"
-   Do not modify. make sure "Support ESP32 internal EMAC controller" checked
-   make sure Ethernet > PHY interface -> "RMII"
-   Ethernet > RMII clock mode -> "input.....from external"
+   6. Do not modify. make sure "Support ESP32 internal EMAC controller" -> "checked"
+
+   7. make sure Ethernet > PHY interface -> "RMII"
+   
+   8. Ethernet > RMII clock mode -> "input.....from external"
 
 * --> Click Component config
-   ESP System Settings > Trace memory > Task Watchdog timeout period (seconds) -> "10"
+   9. ESP System Settings > Trace memory > Task Watchdog timeout period (seconds) -> "10"
 
 * --> Click Component config > I2C Device Library (we change it in source code manually, for your info)
-   I2C Device Library > Default I2C SDA pin -> "16"
-   I2C Device Library > Default I2C SCL pin -> "17"
+   
+   10. I2C Device Library > Default I2C SDA pin -> "16"
+   
+   11. I2C Device Library > Default I2C SCL pin -> "17"
 
 * --> Click Component config > Modbus configuration
-   Modbus configuration > Modbus TCP port number -> "502"
+
+   12. Modbus configuration > Modbus TCP port number -> "502"
+
+* --> Component config > LWIP
+
+   13. Maximum FIN Segment lifetime (ms) -> "5000"
+
+   14. Maximum segment lifetime (MSL) -> "5000"
+
+
+* --> Modbus config
+   
+   15. Max allowed connections for TCP stack -> "6"
+
+   16. Modbus TCP connection timeout(seconds) -> "1"
+
+   17. Modbus TCP keep alive timeout(seconds) -> "1"
 
 * Done !!! Click "Save".
 
