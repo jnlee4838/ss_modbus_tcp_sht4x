@@ -77,56 +77,49 @@ We are going to use ESP-IDF version 5.4.2 only in this project, you should insta
 
 ![esp32 ksz8863 simple switch sht4x sdkconfig](images/ESP32_KSZ8863_SHT4x_Step_07.jpg)
 
-* --> Type "cpu" in the top search box
+1. Type "cpu" in the top search box
 
-   1. Component config > ESP System Settings > CPU frequency -> "240 MHz"
+   * Component config > ESP System Settings > CPU frequency -> "240 MHz"
 
-   2. Modbus configuration > Modbus task affinity -> "CPU1"
+   * Modbus configuration > Modbus task affinity -> "CPU1"
 
-   3. mDNS > mDNS task affinity -> "CPU1"
+   * mDNS > mDNS task affinity -> "CPU1"
 
-* --> Type "flash" in the top search box
+2. Type "flash" in the top search box
 
-   4. Serial flasher config > Flash size -> "4MB"
+   * Serial flasher config > Flash size -> "4MB"
 
-* --> Click "Example Configuration"
+3. Click "Example Configuration"
 
-   5. Example Configuration > Enable external RMII clock oscillator -> "unchecked"
+   * Example Configuration > Enable external RMII clock oscillator -> "unchecked"
 
-* --> Click Component config > "Ethernet"
-   6. Do not modify. make sure "Support ESP32 internal EMAC controller" -> "checked"
+4. Click Component config > "Ethernet"
 
-   7. make sure Ethernet > PHY interface -> "RMII"
-   
-   8. Ethernet > RMII clock mode -> "input.....from external"
+   * make sure "Support ESP32 internal EMAC controller" -> "checked"
 
-* --> Click Component config
-   9. ESP System Settings > Trace memory > Task Watchdog timeout period (seconds) -> "10"
+   * make sure Ethernet > PHY interface -> "RMII"
 
-* --> Click Component config > I2C Device Library (we change it in source code manually, for your info)
-   
-   10. I2C Device Library > Default I2C SDA pin -> "16"
-   
-   11. I2C Device Library > Default I2C SCL pin -> "17"
+   * Ethernet > RMII clock mode -> "input.....from external"
 
-* --> Click Component config > Modbus configuration
+5. Click Component config
 
-   12. Modbus configuration > Modbus TCP port number -> "502"
+   * ESP System Settings > Trace memory > Task Watchdog timeout period (seconds) -> "10"
 
-* --> Component config > LWIP
+6. Click Component config > I2C Device Library (we change it in source code manually, for your info)
 
-   13. Maximum FIN Segment lifetime (ms) -> "5000"
+   * I2C Device Library > Default I2C SDA pin -> "16"
 
-   14. Maximum segment lifetime (MSL) -> "5000"
+   * I2C Device Library > Default I2C SCL pin -> "17"
 
+7. Click Component config > Modbus configuration
 
-* --> Modbus config
-   
-   15. Max allowed connections for TCP stack -> "6"
+   * Modbus configuration > Modbus TCP port number -> "502"
 
-   16. Modbus TCP connection timeout(seconds) -> "1"
+   * Max allowed connections for TCP stack -> "6"
 
-   17. Modbus TCP keep alive timeout(seconds) -> "1"
+   * Modbus TCP connection timeout(seconds) -> "1"
+
+   * Modbus TCP keep alive timeout(seconds) -> "1"
 
 * Done !!! Click "Save".
 
@@ -136,7 +129,7 @@ We are going to use ESP-IDF version 5.4.2 only in this project, you should insta
 
 ![esp32 ksz8863 simple switch sht4x build complete](images/ESP32_KSZ8863_SHT4x_Build_Done.jpg)
 
-* neally done !
+* nearly done !
 
 * click "Flash Device" icon.
 
@@ -370,8 +363,40 @@ Another L2 TAP braodcasts 0x7000 Ethernet frame every two seconds.
 
 ![esp32 ksz8863 simple switch sht4x WireShark captured](images/ESP32_KSZ8863_SHT4x_Modbus_TCP_Test_WireShark_Capture.jpg)
 
+## Error message
+
+The phenomenon occurs when Modbus Master (Client) disconnects the connection.
+
+```bash
+
+I (16551) Modbus TCP Slave Example: xx xx xx xx xx xx xx xx
+
+sht4x Sensor: 23.77 *C, 21.45 %
+sht4x Sensor: 23.73 *C, 21.44 %
+sht4x Sensor: 23.76 *C, 21.52 %
+sht4x Sensor: 23.77 *C, 21.58 %
+sht4x Sensor: 23.75 *C, 21.64 %
+E (21251) mb_port.tcp.slave: 0x3ffc4f8c, node #0, socket(#55)(192.168.0.2), communication fail, err= -11
+I (21551) Modbus TCP Slave Example: Dynamic MAC Table content:
+
+```
+
+![esp32 ksz8863 simple switch sht4x WireShark Error](images/ESP32_KSZ8863_SHT4x_Modbus_TCP_WireShark_Error.jpg)
+
+* To get rid of "E (867251) mb_port.tcp.slave: 0x3ffc4f90, node #0, socket(#55)(192.168.0.2), communication fail, err= -11" error
+
+* Tried to modify Modbus TCP KEEPALIVE TOUT and TCP timeout params -> no effect. it helps the error message shows in short in the above SDKCONFIG params.
+
+* The fundametal cause is I tink the LWIP lib doesn't refresh it at all even though it received "FIN" command and sent the "ACK" back to the client. it sends "KEEPALIVE" messages again.
+
+* Please let me know the remedy if you have. by the way, it doesn't affect any wrong operation. except the case that Master has got an extream short timeout to reconnect.
+
 ## Related
 
-Here is another project to perform the Throughput of esp32 ksz8863 dual Ethernet by Iperf2 as well as Iperf3.
+* Here is a simple GUI for Modbus TCP master (client), Modbus TCP master with "QT for Python" and Pyside6 as well as pyModbus TCP library.
 
-[Iperf esp32 ksz8863 dual Ethernet README](https://github.com/jnlee4838/Iperf-esp32-ksz8863/readme)
+[Modbus Watch V0.1 README](https://github.com/jnlee4838/ModbusWatch)
+
+* Here is another project to perform the Throughput of esp32 ksz8863 dual Ethernet by Iperf2 as well as Iperf3.
+
+[Iperf esp32 ksz8863 dual Ethernet README](https://github.com/jnlee4838/Iperf-esp32-ksz8863)
