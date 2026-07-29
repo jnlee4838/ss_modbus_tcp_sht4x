@@ -5,7 +5,7 @@ It's a simple demonstation of ESP32 + KSZ8863 + Modbus TCP Slave (TCP Server) + 
 You could make an scalable Ethernet daisy chain network which supports Modbus TCP at faster speed. by the way, this example is for Modbus Slave only. in case that you are using Ethernet KSZ8863 switch, you'd better off Wi-Fi for better stability.
 
 The RST-ESP32-KSZ8863 Development Board has got the unused I/O ports in right side. GPIO #16 for SDA, #17 for SCL of I2C1.
-By the way, before we jump in, please read the previous repos here[https://github.com/jnlee4838/esp32-ksz8863-dual-Ethernet] & here[https://github.com/jnlee4838/iperf-esp32-ksz8863] for better understanding.
+By the way, before we jump in, please read the previous repos [here](https://github.com/jnlee4838/esp32-ksz8863-dual-Ethernet) & [here](https://github.com/jnlee4838/iperf-esp32-ksz8863) for better understanding.
 
 ## Screenshots
 
@@ -17,17 +17,6 @@ By the way, before we jump in, please read the previous repos here[https://githu
 
 ![SHT40 Module](images/SHT4x_Module.jpg)
 
-## Buy
-
-* For an inquiry, [*email me*](jnlee4838@gmail.com)
-
-### Korea
-
-* Smartstore: [**Buy Here**](https://smartstore.naver.com/radiosystek)
-
-### International
-
-* BuyKorea: [**Buy Here**](https://buykorea.org/ec/prd/selectGoodsDetail.do?goodsSn=3771535)
 
 ## Preparation
 
